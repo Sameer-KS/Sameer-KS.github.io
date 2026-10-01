@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sameer K S — AI & Automation Engineer</title>
+<style>
+  :root{
+    --bg:#0B0E14;
+    --panel:#121722;
+    --panel-border:#232B3A;
+    --text:#E7EAF0;
+    --muted:#8993A8;
+    --accent:#5B8DEF;
+    --accent-dim:#1C2538;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    --sans: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 28px;}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(11,14,20,0.92);
+      backdrop-filter:blur(6px);border-bottom:1px solid var(--panel-border);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;flex-wrap:wrap;}
+  nav .mark{font-family:var(--mono);color:var(--accent);font-size:14px;}
+  nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0;align-items:center;}
+  nav a{color:var(--muted);font-size:13.5px;}
+  nav a:hover{color:var(--text);text-decoration:none;}
+  nav .navcv{border:1px solid var(--accent);color:var(--accent);padding:6px 14px;border-radius:5px;}
+  nav .navcv:hover{background:var(--accent);color:#0B0E14;text-decoration:none;}
+
+  header.hero{padding:76px 0 56px;border-bottom:1px solid var(--panel-border);}
+  .hero-grid{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
+  .hero-text{flex:1;min-width:300px;}
+  .eyebrow{font-family:var(--mono);color:var(--accent);font-size:13px;}
+  h1{font-size:40px;line-height:1.15;margin:14px 0 18px;font-weight:600;}
+  .lede{color:var(--muted);max-width:520px;font-size:16px;margin-bottom:26px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+  .tag{font-family:var(--mono);font-size:12.5px;color:var(--text);
+       border:1px solid var(--panel-border);padding:5px 10px;border-radius:3px;background:var(--panel);}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{padding:11px 20px;border-radius:5px;font-size:14px;font-weight:600;border:1px solid var(--accent);}
+  .btn.primary{background:var(--accent);color:#0B0E14;}
+  .btn.primary:hover{background:#4677d8;text-decoration:none;}
+  .btn.ghost{color:var(--text);border-color:var(--panel-border);}
+  .btn.ghost:hover{border-color:var(--accent);text-decoration:none;}
+
+  .headshot{width:180px;height:180px;border-radius:50%;object-fit:cover;
+             border:2px solid var(--accent);flex-shrink:0;}
+
+  section{padding:52px 0;border-bottom:1px solid var(--panel-border);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:22px;font-weight:500;}
+  .sub{color:var(--muted);font-size:14px;margin:-16px 0 22px;}
+
+  .about p{max-width:660px;}
+
+  /* Experience */
+  .timeline{border-left:2px solid var(--panel-border);padding-left:22px;}
+  .job{margin-bottom:30px;position:relative;}
+  .job:before{content:"";position:absolute;left:-28px;top:4px;width:9px;height:9px;
+              border-radius:50%;background:var(--accent);}
+  .job .when{font-family:var(--mono);color:var(--accent);font-size:12.5px;}
+  .job h3{margin:6px 0 2px;font-size:17px;}
+  .job .where{color:var(--muted);font-size:14px;margin-bottom:10px;}
+  .job ul{margin:0;padding-left:18px;color:var(--text);font-size:14.5px;}
+  .job li{margin-bottom:4px;}
+
+  /* Projects */
+  .project{background:var(--panel);border:1px solid var(--panel-border);
+            border-radius:6px;padding:26px;margin-bottom:20px;}
+  .project h3{margin:0 0 8px;font-size:19px;}
+  .project p.desc{color:var(--muted);margin:0 0 16px;max-width:620px;font-size:15px;}
+  .metrics{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:16px;}
+  .metric .val{font-family:var(--mono);font-size:20px;color:var(--accent);display:block;}
+  .metric .lbl{font-size:12px;color:var(--muted);}
+  .stack{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+
+  /* Skills */
+  .skills-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .skill-cat{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;padding:18px;}
+  .skill-cat h4{margin:0 0 12px;font-size:14px;color:var(--accent);}
+  .skill-cat .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{font-size:12.5px;border:1px solid var(--panel-border);border-radius:4px;padding:5px 9px;color:var(--text);}
+
+  /* Education / certs */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+  .card{background:var(--panel);border:1px solid var(--panel-border);border-radius:6px;padding:20px;}
+  .card .kicker{font-family:var(--mono);color:var(--accent);font-size:11.5px;margin-bottom:6px;}
+  .card h3{margin:0 0 6px;font-size:16.5px;}
+  .card .where{color:var(--muted);font-size:13.5px;margin-bottom:8px;}
+  .card .detail{color:var(--text);font-size:13.5px;}
+
+  .cert-item{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--panel-border);}
+  .cert-item:first-child{border-top:none;}
+  .cert-item .what{font-size:15px;}
+  .cert-item .where{color:var(--muted);font-size:13.5px;}
+  .cert-item .date{font-family:var(--mono);color:var(--muted);font-size:12.5px;white-space:nowrap;}
+
+  .lang-row{display:flex;flex-wrap:wrap;gap:28px;}
+  .lang .name{font-family:var(--mono);color:var(--accent);font-size:14px;}
+  .lang .level{color:var(--muted);font-size:12.5px;}
+
+  footer{padding:48px 0 60px;}
+  footer .inner{text-align:center;}
+  footer .muted{color:var(--muted);font-size:14px;max-width:480px;margin:0 auto 24px;}
+  footer .links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;}
+
+  @media (max-width:640px){
+    h1{font-size:30px;}
+    .hero-grid{flex-direction:column-reverse;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="mark">SK/</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a class="navcv" href="cv.pdf">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">AI & AUTOMATION ENGINEER</div>
+      <h1>Sameer Kandathinkarayil Subiar</h1>
+      <p class="lede">Master's student in Applied AI for Digital Production and Management, with a mechanical engineering background. I build predictive maintenance systems — digital twins, remaining-useful-life prediction, and computer vision for industrial quality control.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">MATLAB / Simulink</span>
+        <span class="tag">Simscape</span>
+        <span class="tag">YOLOv8</span>
+        <span class="tag">BiLSTM + Attention</span>
+        <span class="tag">Azure</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="cv.pdf">Download CV</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sameerks13579">LinkedIn</a>
+      </div>
+    </div>
+    <img class="headshot" src="sameer-photo.png" alt="Sameer Kandathinkarayil Subiar">
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>ABOUT</h2>
+    <div class="about">
+      <p>Master's student in Applied AI for Digital Production and Management at Deggendorf Institute of Technology, Germany, with a background in mechanical engineering and prior industry experience in quality inspection and automotive manufacturing. My work combines physics-based simulation with machine learning — using digital twins and deep learning to predict equipment failure before it happens, and computer vision to automate quality inspection on the production line.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>EXPERIENCE</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">Aug 2021 – May 2022</div>
+        <h3>Junior Engineer</h3>
+        <div class="where">Gravitech Inspection Services, Cochin, India</div>
+        <ul>
+          <li>Planned and developed technical processes and test procedures</li>
+          <li>Implemented systems to ensure product and process quality</li>
+          <li>Ensured compliance with safety regulations</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="when">Oct 2020 – Feb 2023</div>
+        <h3>Production Trainee</h3>
+        <div class="where">Ashok Leyland Limited, Hosur, India</div>
+        <ul>
+          <li>Assisted in instrument panel and handle unit installation for commercial vehicles</li>
+          <li>Operated front visor sealant applying robot, ensuring consistent quality and efficiency</li>
+          <li>Performed spot welding tasks as part of the structural assembly process</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>PROJECTS</h2>
+
+    <div class="project">
+      <h3>Digital Twin of a Rotating Shaft for Predictive Maintenance</h3>
+      <p class="desc">A physics-based Simulink/Simscape digital twin combined with a BiLSTM-attention model to predict remaining useful life (RUL) of a rotating shaft, visualized in a live monitoring dashboard.</p>
+      <div class="metrics">
+        <div class="metric"><span class="val">2.46d</span><span class="lbl">MAE</span></div>
+        <div class="metric"><span class="val">0.927</span><span class="lbl">R²</span></div>
+        <div class="metric"><span class="val">92.3%</span><span class="lbl">within ±5 days</span></div>
+      </div>
+      <div class="stack">MATLAB · Simulink · Simscape · Deep Learning · App Designer</div>
+      <a href="https://github.com/karthikgopi79-droid/Digital-Twin-of-a-Rotating-Shaft-for-Predictive-Maintenance-using-MATLAB-Simulink-and-Simscape">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <h3>Casting Product Defect Classification with YOLOv8</h3>
+      <p class="desc">A YOLOv8-based classifier that flags defective cast metal parts from an image, trained with Gaussian-noise augmentation for robustness against real-world image variation — deployed in a desktop app.</p>
+      <div class="metrics">
+        <div class="metric"><span class="val">99.80%</span><span class="lbl">F1 score</span></div>
+        <div class="metric"><span class="val">99.86%</span><span class="lbl">Accuracy</span></div>
+        <div class="metric"><span class="val">100%</span><span class="lbl">Recall</span></div>
+      </div>
+      <div class="stack">Python · YOLOv8 · CustomTkinter · OpenCV</div>
+      <a href="https://github.com/Sameer-KS/casting-defect-classification-yolov8">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>SKILLS</h2>
+    <div class="skills-cols">
+      <div class="skill-cat">
+        <h4>Programming & Tools</h4>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Git</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">ANSYS</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Simulation & Digital Twins</h4>
+        <div class="chips">
+          <span class="chip">MATLAB / Simulink</span>
+          <span class="chip">Simscape</span>
+          <span class="chip">Signal Processing</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>AI & Machine Learning</h4>
+        <div class="chips">
+          <span class="chip">Deep Learning</span>
+          <span class="chip">BiLSTM + Attention</span>
+          <span class="chip">YOLOv8</span>
+          <span class="chip">Machine Learning Frameworks</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Computer Vision</h4>
+        <div class="chips">
+          <span class="chip">OpenCV</span>
+          <span class="chip">YOLOv8</span>
+          <span class="chip">Tkinter / CustomTkinter</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Cloud</h4>
+        <div class="chips">
+          <span class="chip">Azure</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Quality & Standards</h4>
+        <div class="chips">
+          <span class="chip">ASNT NDT Level II</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>EDUCATION</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="kicker">MASTER OF ENGINEERING</div>
+        <h3>Applied AI for Digital Production and Management</h3>
+        <div class="where">Deggendorf Institute of Technology, Cham, Germany · 2024–present</div>
+        <div class="detail">Focus: Modelling and Simulation, Cyber-Physical Systems, Machine Learning and Deep Learning, Big Data, NLP, Production & Logistics Management.</div>
+      </div>
+      <div class="card">
+        <div class="kicker">BACHELOR OF TECHNOLOGY</div>
+        <h3>Mechanical Engineering</h3>
+        <div class="where">APJ Abdul Kalam Technological University, Ettumanoor, India · 2016–2020</div>
+        <div class="detail">Focus: Mechanical Design, Advanced Manufacturing, CAD/CAE, Mechatronics, Automation & Control, Industrial Engineering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <h2>CERTIFICATIONS</h2>
+    <div class="cert-item">
+      <div><div class="what">Python for Everybody Specialization</div><div class="where">University of Michigan · Coursera — programming fundamentals, data structures, web data access, databases, and a data capstone</div></div>
+    </div>
+    <div class="cert-item">
+      <div><div class="what">Introduction to Programming with MATLAB</div><div class="where">Vanderbilt University · Coursera</div></div>
+    </div>
+    <div class="cert-item">
+      <div><div class="what">MATLAB Onramp</div><div class="where">MathWorks Training Services</div></div>
+    </div>
+    <div class="cert-item">
+      <div><div class="what">ASNT NDT Level II Certification</div><div class="where">Non-Destructive Testing</div></div>
+    </div>
+    <div class="cert-item">
+      <div><div class="what">Certificate of Skill Training</div><div class="where">Ashok Leyland</div></div>
+    </div>
+    <div class="cert-item">
+      <div><div class="what">Intro to Digital Manufacturing with Autodesk Fusion 360</div><div class="where">Autodesk · Coursera</div></div>
+    </div>
+
+    <h2 style="margin-top:36px;">LANGUAGES</h2>
+    <div class="lang-row">
+      <div class="lang"><div class="name">English</div><div class="level">Full professional (C2)</div></div>
+      <div class="lang"><div class="name">German</div><div class="level">A2</div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap inner">
+    <h2 style="justify-content:center;">GET IN TOUCH</h2>
+    <p class="muted">Master's student in Applied AI, open to student assistant and thesis opportunities in applied AI and industrial machine learning.</p>
+    <div class="links">
+      <a href="mailto:sameerks13579@gmail.com">sameerks13579@gmail.com</a>
+      <a href="https://www.linkedin.com/in/sameerks13579">LinkedIn</a>
+      <a href="https://github.com/Sameer-KS">GitHub</a>
+      <a href="cv.pdf">CV</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
